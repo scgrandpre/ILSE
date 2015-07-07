@@ -8,6 +8,8 @@
 
 import ui.View;
 import ui.ImageView;
+import util.ajax as ajax;
+
 
 /* The title screen is added to the scene graph when it becomes
  * a child of the main application. When this class is instantiated,
@@ -65,10 +67,25 @@ var joinButton = new ui.View({
 		 * the top-level application file.
 		 */
 		joinButton.on('InputSelect', bind(this, function () {
+		//	new QRCode(document.getElementById("qrcode"), "http://jindo.dev.naver.com/collie");
 			this.emit('titlescreen:start');
 		}));
 		leaderboardButton.on('InputSelect', bind(this, function () {
 			window.alert("Leaderboard!");
+			ajax.post({
+				  url: 'https://api.parse.com/1/classes/Login',
+				  headers: {'Content-Type': 'application/json',
+				  			'X-Parse-Application-Id': '06RHjxRMWOQFMilpGgidqUBeNRIcmokmHJqNG0Vf',
+				  			'X-Parse-REST-API-Key': 'W7yETRg7NeXfITxjU7EM3kgwI89cU4HZkAJz0Kvg'
+				},
+				  data: {'Score': '1337', 'PlayerName': 'Scott Grandpre', 'cheatMode': false}
+				}, function (err, response) {
+				  if (err) {
+				    console.error('someting went wrong');
+				  } else {
+				    console.log(response);
+				  }
+			});
 		}));
 		athleteButton.on('InputSelect', bind(this, function () {
 			window.alert("Edit Your Athlete!!");

@@ -10,6 +10,7 @@ import src.TitleScreen as TitleScreen;
 import src.GameScreen as GameScreen;
 import src.soundcontroller as soundcontroller;
 
+
 /* Your application inherits from GC.Application, which is
  * exported and instantiated when the game is run.
  */
