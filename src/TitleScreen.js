@@ -18,7 +18,7 @@ exports = Class(ui.ImageView, function (supr) {
 		opts = merge(opts, {
 			x: 0,
 			y: 0,
-			image: "resources/images/title_screen.png"
+			image: "resources/images/interactiveFan.png"
 		});
 
 		supr(this, 'init', [opts]);
@@ -31,20 +31,61 @@ exports = Class(ui.ImageView, function (supr) {
 		 * we just need to create and position an overlay view that
 		 * will register input events and act as button.
 		 */
-		var startbutton = new ui.View({
+var joinButton = new ui.View({
 			superview: this,
-			x: 58,
-			y: 313,
-			width: 200,
-			height: 100
+			x: 10,
+			y: 125,
+			width: 300,
+			height: 67
+		});
+		var leaderboardButton = new ui.View({
+			superview: this,
+			x: 10,
+			y: 212,
+			width: 300,
+			height: 67
+		});
+		var athleteButton = new ui.View({
+			superview: this,
+			x: 10,
+			y: 305,
+			width: 300,
+			height: 67
+		});
+		var upcomingButton = new ui.View({
+			superview: this,
+			x: 10,
+			y: 400,
+			width: 300,
+			height: 67
 		});
 
 		/* Listening for a touch or click event, and will dispatch a
 		 * custom event to the title screen, which is listened for in
 		 * the top-level application file.
 		 */
-		startbutton.on('InputSelect', bind(this, function () {
+		joinButton.on('InputSelect', bind(this, function () {
 			this.emit('titlescreen:start');
 		}));
+		leaderboardButton.on('InputSelect', bind(this, function () {
+			window.alert("Leaderboard!");
+		}));
+		athleteButton.on('InputSelect', bind(this, function () {
+			window.alert("Edit Your Athlete!!");
+		}));
+		upcomingButton.on('InputSelect', bind(this, function () {
+			window.alert("Upcoming Games!");
+		}));
+
 	};
 });
+
+function square(x){
+
+	return x/2;
+}
+
+function background(){
+
+	return "resources/images/interactiveFan.png";
+}

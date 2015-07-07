@@ -22,7 +22,7 @@ exports = Class(GC.Application, function () {
 		var titlescreen = new TitleScreen(),
 				gamescreen = new GameScreen();
 
-		this.view.style.backgroundColor = '#008a42';
+		this.view.style.backgroundColor = '#99CCFF';
 
 
 		// Create a stackview of size 320x480, then scale it to fit horizontally
@@ -49,7 +49,7 @@ exports = Class(GC.Application, function () {
 		 * game screen to start the game.
 		 */
 		titlescreen.on('titlescreen:start', function () {
-			sound.play('levelmusic');
+			//sound.play('levelmusic');
 			rootView.push(gamescreen);
 			gamescreen.emit('app:start');
 		});
